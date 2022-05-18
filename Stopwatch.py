@@ -1,8 +1,7 @@
 from tkinter import *
 import time
-
-gui=Tk()
-gui.geometry('400x450+540+200')
-gui.title('Python Project: Stopwatch')
-gui.configure(background=("black"))
-gui.mainloop()
+#Stop watch frame
+root=Tk()
+root.configure(background=("#FFFFFF"))
+root.title('Python Project: Stopwatch')
+root.geometry("980x720+220+0")
