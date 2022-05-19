@@ -13,3 +13,12 @@ label2 = Label(root, text="MINUTES", fg="black", bg="white", font=("Arial", 10, 
 label2.place(x=455, y=30, width=80, height=30)
 label3 = Label(root, text="SECONDS", fg="black", bg="white", font=("Arial", 10, "bold"))
 label3.place(x=647, y=30, width=80, height=30)
+
+#Global Variables
+elapsed_time1=0
+elapsed_time2=0
+elapsed_time3=0
+time1=0
+time2=0
+i=0
+j=0
