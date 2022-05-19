@@ -1,10 +1,23 @@
 from tkinter import *
 import time
+from time import strftime
+
 #Stop watch frame
 root=Tk()
 root.configure(background=("#FFFFFF"))
 root.title('Python Project: Stopwatch')
 root.geometry("980x720+220+0")
+
+#Function for Date & Time
+def my_time():
+    time_string = strftime('%H:%M:%S %p\n %A \n %x')
+    l1.config(text=time_string)
+    l1.after(1000,my_time)
+
+my_font = ('Arial', 10, 'bold')
+l1 = Label(root, font=my_font,bg='white')
+l1.grid(row=1,column=1,padx=5,pady=25)
+my_time()
 
 # labels for stopwatch
 label1 = Label(root, text="HOURS", fg="black", bg="white", font=("Arial", 10, "bold"))
@@ -22,3 +35,5 @@ time1=0
 time2=0
 i=0
 j=0
+
+root.mainloop()
