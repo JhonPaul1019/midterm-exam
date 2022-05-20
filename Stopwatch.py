@@ -91,6 +91,16 @@ def reset():
     i = 0
     j = 0
 
+#Lap Function
+def lap():
+    global elapsed_time1, elapsed_time2, elapsed_time3, time1, self_job, time2, i, j
+    if i < 9:
+        create_label((str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)), 20 + (110*i), 400+(j*50))
+    else:
+        j += 1
+        i = 0
+        create_label((str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)), 20 + (110*i), 400+(j*50))
+    i += 1
 
 #Stopwatch Frame
 clock_frame = Label(text="00:00:00", bg="white", fg="black", font=("Arial", 100, "bold"))
