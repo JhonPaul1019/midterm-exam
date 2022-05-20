@@ -113,6 +113,11 @@ def lap():
     wig = root.winfo_children()
     for b in wig:
         b.place_forget()
+    resume_button.place_forget()
+    start_button.place(x=20, y=300, width=300, height=100)
+    lap_button.place(x=660, y=300, width= 300, height=100)
+    reset_button.place(x=340, y=300, width=300, height=100)
+    clock_frame.place(x=200, y=50, width=600, height=200)
     label1 = Label(root,text="HOURS", fg="black", bg="white", font=("Arial", 10, "bold"))
     label1.place(x=280,y=30, width=50, height= 30)
     label2 = Label(root,text="MINUTES", fg="black", bg="white", font=("Arial", 10, "bold"))
