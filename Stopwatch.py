@@ -67,9 +67,6 @@ def start():
                     clock_frame.config(text=(str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)))
     self_job = root.after(1000, start)
 
-#Stopwatch Frame
-clock_frame = Label(text="00:00:00", bg="white", fg="black", font=("Arial", 100, "bold"))
-
 #Stop Function
 def stop():
     global self_job
@@ -93,4 +90,8 @@ def reset():
     time2 = 0
     i = 0
     j = 0
+
+
+#Stopwatch Frame
+clock_frame = Label(text="00:00:00", bg="white", fg="black", font=("Arial", 100, "bold"))
 root.mainloop()
