@@ -36,4 +36,34 @@ time2=0
 i=0
 j=0
 
+# Start Function
+def start(): 
+    start_button.place_forget()
+    resume_button.place_forget()
+    stop_button.place(x=20, y=300, width=300, height=100)
+    global elapsed_time1, elapsed_time2, elapsed_time3, time1, self_job, time2
+    time2 = int(time.time())
+    if time2 != time1:
+        time1 = time2
+        if elapsed_time1 < 59:
+            elapsed_time1 += 1
+            clock_frame.config(text=(str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)))
+        else:
+            elapsed_time1 = 0
+            elapsed_time2 += 1
+            if elapsed_time2 < 59:
+                elapsed_time2 += 1
+                clock_frame.config(text=(str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)))
+            else:
+                elapsed_time2 = 0
+                elapsed_time3 += 1
+                if elapsed_time3 >= 24:
+                    elapsed_time1 = 0
+                    elapsed_time2 = 0
+                    elapsed_time3 = 0
+                else:
+                    elapsed_time3 += 1
+                    clock_frame.config(text=(str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)))
+    self_job = root.after(1000, start)
+
 root.mainloop()
