@@ -70,4 +70,11 @@ def start():
 #Stopwatch Frame
 clock_frame = Label(text="00:00:00", bg="white", fg="black", font=("Arial", 100, "bold"))
 
+#Stop Function
+def stop():
+    global self_job
+    if self_job is not None:
+        root.after_cancel(self_job)
+        self_job = None
+
 root.mainloop()
