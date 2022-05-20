@@ -6,7 +6,16 @@ from time import strftime
 root=Tk()
 root.configure(background=("#FFFFFF"))
 root.title('Python Project: Stopwatch')
-root.geometry("980x720+220+0")
+root.geometry("980x720+250+0")
+root.resizable(False,False)
+
+#Labels For Stopwatch
+label1 = Label(root, text="HOURS", fg="black", bg="white", font=("Arial", 10, "bold"))
+label1.place(x=280, y=30, width=50, height=30)
+label2 = Label(root, text="MINUTES", fg="black", bg="white", font=("Arial", 10, "bold"))
+label2.place(x=455, y=30, width=80, height=30)
+label3 = Label(root, text="SECONDS", fg="black", bg="white", font=("Arial", 10, "bold"))
+label3.place(x=647, y=30, width=80, height=30)
 
 #Function for Date & Time
 def my_time():
@@ -19,14 +28,6 @@ l1 = Label(root, font=my_font,bg='white')
 l1.grid(row=1,column=1,padx=5,pady=25)
 my_time()
 
-# labels for stopwatch
-label1 = Label(root, text="HOURS", fg="black", bg="white", font=("Arial", 10, "bold"))
-label1.place(x=280, y=30, width=50, height=30)
-label2 = Label(root, text="MINUTES", fg="black", bg="white", font=("Arial", 10, "bold"))
-label2.place(x=455, y=30, width=80, height=30)
-label3 = Label(root, text="SECONDS", fg="black", bg="white", font=("Arial", 10, "bold"))
-label3.place(x=647, y=30, width=80, height=30)
-
 #Global Variables
 elapsed_time1=0
 elapsed_time2=0
@@ -36,7 +37,7 @@ time2=0
 i=0
 j=0
 
-# Start Function
+#Start Function
 def start(): 
     start_button.place_forget()
     resume_button.place_forget()
@@ -65,5 +66,8 @@ def start():
                     elapsed_time3 += 1
                     clock_frame.config(text=(str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)))
     self_job = root.after(1000, start)
+
+#Stopwatch Frame
+clock_frame = Label(text="00:00:00", bg="white", fg="black", font=("Arial", 100, "bold"))
 
 root.mainloop()
