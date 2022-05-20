@@ -77,4 +77,20 @@ def stop():
         root.after_cancel(self_job)
         self_job = None
 
+#Reset Function
+def reset():
+    global elapsed_time1, elapsed_time2, elapsed_time3, time1, self_job, time2, i, j
+    try:
+        stop()
+    except:
+        start()
+        stop()
+    clock_frame.config(text="00:00:00")
+    elapsed_time1 = 0
+    elapsed_time2 = 0
+    elapsed_time3 = 0
+    time1 = 0
+    time2 = 0
+    i = 0
+    j = 0
 root.mainloop()
