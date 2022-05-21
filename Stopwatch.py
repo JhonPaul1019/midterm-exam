@@ -1,13 +1,14 @@
 from tkinter import *
 import time
 from time import strftime
+import calendar
 
 #Stop watch frame
 root=Tk()
 root.configure(background=("#FFFFFF"))
 root.title('Python Project: Stopwatch')
 root.geometry("980x720+250+0")
-root.resizable(False,False)
+root.resizable(False,True)
 
 #Labels For Stopwatch
 label1 = Label(root, text="HOURS", fg="black", bg="white", font=("Arial", 10, "bold"))
@@ -98,17 +99,6 @@ def reset():
     i = 0
     j = 0
 
-#Lap Function
-def lap():
-    global elapsed_time1, elapsed_time2, elapsed_time3, time1, self_job, time2, i, j
-    if i < 9:
-        create_label((str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)), 20 + (110*i), 400+(j*50))
-    else:
-        j += 1
-        i = 0
-        create_label((str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)), 20 + (110*i), 400+(j*50))
-    i += 1
-
 #Function to Retain Widgets After Reset    
     wig = root.winfo_children()
     for b in wig:
@@ -124,6 +114,47 @@ def lap():
     label2.place(x=455,y=30, width=80, height= 30)
     label3 = Label(root,text="SECONDS", fg="black", bg="white", font=("Arial", 10, "bold"))
     label3.place(x=647,y=30, width=80, height= 30)
+    
+    #Calendar Function
+    def createWidgets():
+        popupwindow1 = Toplevel(root)
+        popupwindow1.title("Calendar Year Input")
+        popupwindow1.geometry("300x100+590+300")
+        popupwindow1.resizable(False, False)
+        label1_1 = Label(popupwindow1, text="Enter the Year in XXXX Format - ")
+        label1_1.grid(row=0, column=0, padx=5, pady=5)
+        global entry1
+        entry1 = Entry(popupwindow1, width=15)
+        entry1.grid(row=0, column=1)
+
+        but = Button(popupwindow1, text="Submit", width=10, command=submit)
+        but.grid(row=2, column=1)
+
+#Lap Function
+def lap():
+    global elapsed_time1, elapsed_time2, elapsed_time3, time1, self_job, time2, i, j
+    if i < 9:
+        create_label((str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)), 20 + (110*i), 400+(j*50))
+    else:
+        j += 1
+        i = 0
+        create_label((str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)), 20 + (110*i), 400+(j*50))
+    i += 1
+
+#Calendar Function
+def createWidgets():
+    popupwindow1 = Toplevel(root)
+    popupwindow1.title("Calendar Year Input")
+    popupwindow1.geometry("300x100+590+300")
+    popupwindow1.resizable(False, False)
+    label1_1 = Label(popupwindow1, text="Enter the Year in XXXX Format - ")
+    label1_1.grid(row=0, column=0, padx=5, pady=5)
+    global entry1
+    entry1 = Entry(popupwindow1, width=15)
+    entry1.grid(row=0, column=1)
+
+    but = Button(popupwindow1, text="Submit", width=10, command=submit)
+    but.grid(row=2, column=1)
 
 #Stopwatch Frame
 clock_frame = Label(text="00:00:00", bg="white", fg="black", font=("Arial", 100, "bold"))
