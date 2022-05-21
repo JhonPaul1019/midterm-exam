@@ -56,13 +56,13 @@ def start():
             clock_frame.config(text=(str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)))
         else:
             elapsed_time1 = 0
-            elapsed_time2 += 1
+            elapsed_time2 += 0
             if elapsed_time2 < 59:
                 elapsed_time2 += 1
                 clock_frame.config(text=(str(elapsed_time3).zfill(2) + ":" + str(elapsed_time2).zfill(2) + ":" + str(elapsed_time1).zfill(2)))
             else:
                 elapsed_time2 = 0
-                elapsed_time3 += 1
+                elapsed_time3 += 0
                 if elapsed_time3 >= 24:
                     elapsed_time1 = 0
                     elapsed_time2 = 0
