@@ -7,7 +7,7 @@ import calendar
 root=Tk()
 root.configure(background=("#FFFFFF"))
 root.title('Python Project: Stopwatch')
-root.geometry("980x720+250+0")
+root.geometry("980x780+250+0")
 root.resizable(False,True)
 
 #Labels For Stopwatch
@@ -26,7 +26,7 @@ def my_time():
 
 my_font = ('Arial', 10, 'bold')
 l1 = Label(root, font=my_font,bg='white')
-l1.grid(row=1,column=1,padx=5,pady=25)
+l1.grid(row=1,column=1,padx=0,pady=0)
 my_time()
 
 #Global Variables
@@ -84,7 +84,7 @@ def stop():
 
 #Reset Function
 def reset():
-    global elapsed_time1, elapsed_time2, elapsed_time3, time1, self_job, time2, i, j
+    global elapsed_time1, elapsed_time2, elapsed_time3, time1, self_job, time2, i, j, popupwindow2
     try:
         stop()
     except:
@@ -98,7 +98,8 @@ def reset():
     time2 = 0
     i = 0
     j = 0
-
+    popupwindow2.destroy()
+    
 #Function to Retain Widgets After Reset    
     wig = root.winfo_children()
     for b in wig:
@@ -129,25 +130,25 @@ def reset():
 
         but = Button(popupwindow1, text="Submit", width=10, command=submit)
         but.grid(row=2, column=1)
-        
-def submit():
-    global entry1
-    Alarmtime = entry1.get()
-    text = calendar.calendar(int(Alarmtime))
-    popupwindow = Toplevel(root)
-    popupwindow.title("Calendar")
-    popupwindow.geometry("620x650+430+20")
-    popupwindow.resizable(False, False)
-    label_1 = Label(popupwindow, text="CALENDAR", bg="white", fg="black", font=("Times", 28, "bold"))
-    label_1.grid(row=1,column=1)
-    popupwindow.config(background="white")
-    l_1=Label(popupwindow, text=text, font=('Courier', 10, 'bold'), justify=LEFT, bg='white')
-    l_1.grid(row=2, column=1, padx=20)
-    popupwindow.mainloop()
+
+    def submit():
+        global entry1
+        Alarmtime = entry1.get()
+        text = calendar.calendar(int(Alarmtime))
+        popupwindow = Toplevel(root)
+        popupwindow.title("Calendar")
+        popupwindow.geometry("620x650+430+20")
+        popupwindow.resizable(False, False)
+        label_1 = Label(popupwindow, text="CALENDAR", bg="white", fg="black", font=("Times", 28, "bold"))
+        label_1.grid(row=1,column=1)
+        popupwindow.config(background="white")
+        l_1=Label(popupwindow, text=text, font=('Courier', 10, 'bold'), justify=LEFT, bg='white')
+        l_1.grid(row=2, column=1, padx=20)
+        popupwindow.mainloop()
 
 #Button for Calendar
-button = Button(root, text="Calendar", fg="black", command=createWidgets, font=("Arial", 8, "bold"))
-button.place(x=12,y=60, width=60, height= 30)
+    button = Button(root, text="Calendar", fg="black", command=createWidgets, font=("Arial", 8, "bold"))
+    button.place(x=12,y=60, width=60, height= 30)
 
 #Lap Function
 def lap():
@@ -193,14 +194,29 @@ def submit():
 #Button for Calendar
 button = Button(root, text="Calendar", fg="black", command=createWidgets, font=("Arial", 8, "bold"))
 button.place(x=12,y=60, width=60, height= 30)
-    
+
+#Popup Window that asks if the user want to reset the Stopwatch
+def createWidgets1():
+    global popupwindow2
+    popupwindow2 = Toplevel(root)
+    popupwindow2.title("")
+    popupwindow2.geometry("200x100+640+320")
+    popupwindow2.resizable(False, False)
+    label1_1 = Label(popupwindow2, text="Do you want to Reset \n the Stopwatch?", font=("Arial", 13))
+    label1_1.place(x=20,y=10)
+
+    but1 = Button(popupwindow2, text="Yes", command=reset, font=("Arial", 10))
+    but1.place(x=35,y=60, height=30, width=50)
+    but2 = Button(popupwindow2, text="No", command=popupwindow2.destroy, font=("Arial", 10))
+    but2.place(x=115,y=60, height=30, width=50)
+
 #Stopwatch Frame
 clock_frame = Label(text="00:00:00", bg="white", fg="black", font=("Arial", 100, "bold"))
 start_button = Button(text="Start", bg="green", fg="black", command=start, font=("Arial", 50, "bold"))
 stop_button = Button(text="Stop", bg="red", fg="black", command=stop, font=("Arial", 50, "bold"))
 resume_button = Button(text="Resume", bg="green", fg="black", command=start, font=("Arial", 50, "bold"))
 lap_button = Button(text="Lap", bg="yellow", fg="black", command=lap, font=("Arial", 50, "bold"))
-reset_button = Button(text="Reset", bg="orange", fg="black", command=reset, font=("Arial", 50, "bold"))
+reset_button = Button(text="Reset", bg="orange", fg="black", command=createWidgets1, font=("Arial", 50, "bold"))
 
 #Buttons Placement
 start_button.place(x=20,y=300, width=300, height=100)
