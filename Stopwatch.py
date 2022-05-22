@@ -7,7 +7,7 @@ import calendar
 root=Tk()
 root.configure(background=("#FFFFFF"))
 root.title('Python Project: Stopwatch')
-root.geometry("980x780+250+0")
+root.geometry("980x780+0+0")
 root.resizable(False,True)
 
 #Labels For Stopwatch
@@ -120,33 +120,42 @@ def reset():
     def createWidgets():
         popupwindow1 = Toplevel(root)
         popupwindow1.title("Calendar Year Input")
-        popupwindow1.geometry("300x100+590+300")
+        popupwindow1.geometry("300x100+340+300")
         popupwindow1.resizable(False, False)
         label1_1 = Label(popupwindow1, text="Enter the Year in XXXX Format - ")
         label1_1.grid(row=0, column=0, padx=5, pady=5)
         global entry1
         entry1 = Entry(popupwindow1, width=15)
         entry1.grid(row=0, column=1)
-
+        
         but = Button(popupwindow1, text="Submit", width=10, command=submit)
         but.grid(row=2, column=1)
-
+        
     def submit():
         global entry1
-        Alarmtime = entry1.get()
-        text = calendar.calendar(int(Alarmtime))
-        popupwindow = Toplevel(root)
-        popupwindow.title("Calendar")
-        popupwindow.geometry("620x650+430+20")
-        popupwindow.resizable(False, False)
-        label_1 = Label(popupwindow, text="CALENDAR", bg="white", fg="black", font=("Times", 28, "bold"))
-        label_1.grid(row=1,column=1)
-        popupwindow.config(background="white")
-        l_1=Label(popupwindow, text=text, font=('Courier', 10, 'bold'), justify=LEFT, bg='white')
-        l_1.grid(row=2, column=1, padx=20)
-        popupwindow.mainloop()
+        try:
+            Alarmtime = entry1.get()
+            text = calendar.calendar(int(Alarmtime))
+            popupwindow = Toplevel(root)
+            popupwindow.title("Calendar")
+            popupwindow.geometry("620x650+180+20")
+            popupwindow.resizable(False, False)
+            label_1 = Label(popupwindow, text="CALENDAR", bg="white", fg="black", font=("Times", 28, "bold"))
+            label_1.grid(row=1,column=1)
+            popupwindow.config(background="white")
+            l_1=Label(popupwindow, text=text, font=('Courier', 10, 'bold'), justify=LEFT, bg='white')
+            l_1.grid(row=2, column=1, padx=20)
+            popupwindow.mainloop()
+        
+        except ValueError:
+            popupwindow = Toplevel(root)
+            popupwindow.title("Notice!")
+            popupwindow.geometry("300x100+340+300")
+            popupwindow.resizable(False, False)
+            label_1 = Label(popupwindow, text="Your Input is Wrong!\n Please Try Again!", font=("Arial", 12, "bold"))
+            label_1.place(x=50,y=15, width=200, height= 70)
 
-#Button for Calendar
+    #Button for Calendar
     button = Button(root, text="Calendar", fg="black", command=createWidgets, font=("Arial", 8, "bold"))
     button.place(x=12,y=60, width=60, height= 30)
 
@@ -165,31 +174,40 @@ def lap():
 def createWidgets():
     popupwindow1 = Toplevel(root)
     popupwindow1.title("Calendar Year Input")
-    popupwindow1.geometry("300x100+590+300")
+    popupwindow1.geometry("300x100+340+300")
     popupwindow1.resizable(False, False)
     label1_1 = Label(popupwindow1, text="Enter the Year in XXXX Format - ")
     label1_1.grid(row=0, column=0, padx=5, pady=5)
     global entry1
     entry1 = Entry(popupwindow1, width=15)
     entry1.grid(row=0, column=1)
-
+    
     but = Button(popupwindow1, text="Submit", width=10, command=submit)
     but.grid(row=2, column=1)
     
 def submit():
     global entry1
-    Alarmtime = entry1.get()
-    text = calendar.calendar(int(Alarmtime))
-    popupwindow = Toplevel(root)
-    popupwindow.title("Calendar")
-    popupwindow.geometry("620x650+430+20")
-    popupwindow.resizable(False, False)
-    label_1 = Label(popupwindow, text="CALENDAR", bg="white", fg="black", font=("Times", 28, "bold"))
-    label_1.grid(row=1,column=1)
-    popupwindow.config(background="white")
-    l_1=Label(popupwindow, text=text, font=('Courier', 10, 'bold'), justify=LEFT, bg='white')
-    l_1.grid(row=2, column=1, padx=20)
-    popupwindow.mainloop()
+    try:
+        Alarmtime = entry1.get()
+        text = calendar.calendar(int(Alarmtime))
+        popupwindow = Toplevel(root)
+        popupwindow.title("Calendar")
+        popupwindow.geometry("620x650+180+20")
+        popupwindow.resizable(False, False)
+        label_1 = Label(popupwindow, text="CALENDAR", bg="white", fg="black", font=("Times", 28, "bold"))
+        label_1.grid(row=1,column=1)
+        popupwindow.config(background="white")
+        l_1=Label(popupwindow, text=text, font=('Courier', 10, 'bold'), justify=LEFT, bg='white')
+        l_1.grid(row=2, column=1, padx=20)
+        popupwindow.mainloop()
+    
+    except ValueError:
+        popupwindow = Toplevel(root)
+        popupwindow.title("Notice!")
+        popupwindow.geometry("300x100+340+300")
+        popupwindow.resizable(False, False)
+        label_1 = Label(popupwindow, text="Your Input is Wrong!\n Please Try Again!", font=("Arial", 12, "bold"))
+        label_1.place(x=50,y=15, width=200, height= 70)
 
 #Button for Calendar
 button = Button(root, text="Calendar", fg="black", command=createWidgets, font=("Arial", 8, "bold"))
@@ -200,7 +218,7 @@ def createWidgets1():
     global popupwindow2
     popupwindow2 = Toplevel(root)
     popupwindow2.title("")
-    popupwindow2.geometry("200x100+640+320")
+    popupwindow2.geometry("200x100+390+320")
     popupwindow2.resizable(False, False)
     label1_1 = Label(popupwindow2, text="Do you want to Reset \n the Stopwatch?", font=("Arial", 13))
     label1_1.place(x=20,y=10)
