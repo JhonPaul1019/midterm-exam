@@ -129,6 +129,25 @@ def reset():
 
         but = Button(popupwindow1, text="Submit", width=10, command=submit)
         but.grid(row=2, column=1)
+        
+def submit():
+    global entry1
+    Alarmtime = entry1.get()
+    text = calendar.calendar(int(Alarmtime))
+    popupwindow = Toplevel(root)
+    popupwindow.title("Calendar")
+    popupwindow.geometry("620x650+430+20")
+    popupwindow.resizable(False, False)
+    label_1 = Label(popupwindow, text="CALENDAR", bg="white", fg="black", font=("Times", 28, "bold"))
+    label_1.grid(row=1,column=1)
+    popupwindow.config(background="white")
+    l_1=Label(popupwindow, text=text, font=('Courier', 10, 'bold'), justify=LEFT, bg='white')
+    l_1.grid(row=2, column=1, padx=20)
+    popupwindow.mainloop()
+
+#Button for Calendar
+button = Button(root, text="Calendar", fg="black", command=createWidgets, font=("Arial", 8, "bold"))
+button.place(x=12,y=60, width=60, height= 30)
 
 #Lap Function
 def lap():
@@ -155,7 +174,26 @@ def createWidgets():
 
     but = Button(popupwindow1, text="Submit", width=10, command=submit)
     but.grid(row=2, column=1)
+    
+def submit():
+    global entry1
+    Alarmtime = entry1.get()
+    text = calendar.calendar(int(Alarmtime))
+    popupwindow = Toplevel(root)
+    popupwindow.title("Calendar")
+    popupwindow.geometry("620x650+430+20")
+    popupwindow.resizable(False, False)
+    label_1 = Label(popupwindow, text="CALENDAR", bg="white", fg="black", font=("Times", 28, "bold"))
+    label_1.grid(row=1,column=1)
+    popupwindow.config(background="white")
+    l_1=Label(popupwindow, text=text, font=('Courier', 10, 'bold'), justify=LEFT, bg='white')
+    l_1.grid(row=2, column=1, padx=20)
+    popupwindow.mainloop()
 
+#Button for Calendar
+button = Button(root, text="Calendar", fg="black", command=createWidgets, font=("Arial", 8, "bold"))
+button.place(x=12,y=60, width=60, height= 30)
+    
 #Stopwatch Frame
 clock_frame = Label(text="00:00:00", bg="white", fg="black", font=("Arial", 100, "bold"))
 start_button = Button(text="Start", bg="green", fg="black", command=start, font=("Arial", 50, "bold"))
