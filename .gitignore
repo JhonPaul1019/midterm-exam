@@ -1,1 +1,4 @@
-
+*.exe
+*.md
+*.spec
+*.txt
