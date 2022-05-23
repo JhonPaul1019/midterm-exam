@@ -1,6 +1,6 @@
 # Project in EEE100
 ## Project Title: Python Stopwatch
-### Mones, Mendez, and Tagalog of EEE17.1N
+Members: Mones, Mendez, and Tagalog of EEE17.1N
 
 ## This is our stopwatch
 
