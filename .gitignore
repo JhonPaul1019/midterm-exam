@@ -1,4 +1,4 @@
 *.exe
 *.md
 *.spec
-*.txt
+requirements.txt
