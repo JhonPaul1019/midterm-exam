@@ -1,5 +1,5 @@
 *.exe
 *.md
 *.spec
-requirements.txt
+*.txt
 *.mp4
